@@ -56,6 +56,7 @@ Object blockToJSON(const CBlock& block, const CBlockIndex* blockindex)
     CBigNum bnPrimeChainOrigin = CBigNum(block.GetHeaderHash()) * block.bnPrimeChainMultiplier;
     result.push_back(Pair("primechain", GetPrimeChainName(blockindex->nPrimeChainType, blockindex->nPrimeChainLength).c_str()));
     result.push_back(Pair("primeorigin", bnPrimeChainOrigin.ToString().c_str()));
+    result.push_back(Pair("primechainmultiplier", block.bnPrimeChainMultiplier.ToString().c_str()));
 
     if (blockindex->pprev)
         result.push_back(Pair("previousblockhash", blockindex->pprev->GetBlockHash().GetHex()));
